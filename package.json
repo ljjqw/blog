@@ -1,0 +1,19 @@
+{
+  "name": "my-personal-blog",
+  "version": "1.0.0",
+  "description": "A free docs/blog framework: Markdown compiled to a static site, with local dev server, admin editor, and one-click deploy to Cloudflare Pages (GitHub Pages also supported).",
+  "scripts": {
+    "build": "node build.js",
+    "serve": "node serve.js",
+    "dev": "node build.js && node serve.js",
+    "admin": "node admin.js",
+    "deploy": "node deploy.js",
+    "deploy:cf": "node deploy-cf.js"
+  },
+  "keywords": ["blog", "docs", "static-site", "free", "cloudflare-pages", "github-pages"],
+  "license": "MIT",
+  "dependencies": {
+    "marked": "^12.0.0",
+    "gh-pages": "^6.1.0"
+  }
+}

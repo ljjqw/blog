@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{site_title}}</title>
+<meta name="description" content="{{site_description}}">
+<link rel="stylesheet" href="{{base}}assets/style.css">
+</head>
+<body class="showcase-page">
+<nav class="site-nav">
+  <a class="brand" href="{{base}}index.html">{{site_title}}</a>
+  <div class="nav-right">
+    <a class="nav-link" href="{{base}}docs/{{first_slug}}.html">文档</a>
+    <a class="nav-link" href="{{github}}" target="_blank" rel="noopener">GitHub</a>
+    <button id="themeToggle" class="icon-btn" title="切换亮/暗主题">🌓</button>
+  </div>
+</nav>
+
+<!-- 主视觉 -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="badge">📚 文档框架 · 免费 · 纯静态</div>
+    <h1 class="hero-title">{{title}}</h1>
+    <p class="hero-desc">{{site_description}}</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="{{base}}docs/{{first_slug}}.html">开始阅读 →</a>
+      <a class="btn-ghost" href="{{github}}" target="_blank" rel="noopener">GitHub 仓库</a>
+    </div>
+  </div>
+</header>
+
+<!-- 核心特性 / 技术介绍 -->
+<section class="features">
+  <div class="section-head">
+    <h2>核心特性</h2>
+    <p>一套为技术写作与知识沉淀设计的文档框架。</p>
+  </div>
+  <div class="feature-grid">
+    {{features_html}}
+  </div>
+</section>
+
+<!-- 文档示例 / 技术介绍展示 -->
+<section class="showcase">
+  <div class="section-head">
+    <h2>文档导航</h2>
+    <p>从下面的目录进入对应篇章，或点击右上角「文档」浏览完整树。</p>
+  </div>
+  <div class="showcase-grid">
+    {{section_cards}}
+  </div>
+</section>
+
+<!-- 它是如何工作的 -->
+<section class="how">
+  <div class="section-head">
+    <h2>它是如何工作的</h2>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>写作</h3>
+      <p>在 <code>src/docs</code> 用 Markdown 写内容，frontmatter 控制层级与排序。</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>构建</h3>
+      <p><code>npm run build</code> 把 Markdown 编译为带文档树 / 搜索 / 主题的静态站。</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>部署</h3>
+      <p><code>npm run deploy</code> 一键发布到 GitHub Pages，永久免费。</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  © <span>{{year}}</span> {{site_title}} · 基于静态站点生成
+  <span class="foot-links"><a href="{{base}}docs/{{first_slug}}.html">文档</a> · <a href="{{github}}" target="_blank" rel="noopener">GitHub</a></span>
+</footer>
+
+<script src="{{base}}assets/app.js"></script>
+</body>
+</html>

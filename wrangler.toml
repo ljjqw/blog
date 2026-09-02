@@ -1,0 +1,4 @@
+# Cloudflare Pages 项目配置（供 wrangler 读取项目名；命令行也可加 --project-name 覆盖）
+name = "my-personal-blog"
+pages_build_output_dir = "public"
+compatibility_date = "2025-01-01"

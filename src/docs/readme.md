@@ -1,3 +1,7 @@
+---
+title: README
+---
+
 # 文档博客框架（免费方案）
 
 一个零成本的**文档/博客框架**，整体风格参考 [Nodify 文档站](https://miroiu.github.io/nodify/wiki/connectors-overview.html)（Starlight 风格）：
@@ -9,7 +13,7 @@
 - ⏮ 底部**上一页 / 下一页**导航
 - 🛠 **后台可视化编辑**：在线写文章、**批量导入 Markdown**、**拖拽式调整层级关系**
 
-纯静态、零服务器成本，构建后一键部署到 Cloudflare Pages（国内可直连，推荐），也支持 GitHub Pages / Netlify。
+纯静态、零服务器成本，构建后一键部署到 GitHub Pages（或 Cloudflare Pages / Netlify）。
 
 ## 站点页面
 - **落地页 `index.html`**：站点介绍 + 文档目录卡片
@@ -22,10 +26,8 @@
 ├── build.js             # 构建脚本：Markdown → 静态 HTML（文档树/TOC/导航）
 ├── serve.js             # 本地启动服务脚本（静态服务器）
 ├── admin.js             # 后台服务（在线编辑 / 导入 MD / 编辑层级）
-├── deploy.js            # 自动化部署脚本（→ GitHub Pages，备选）
-├── deploy-cf.js         # 自动化部署脚本（→ Cloudflare Pages，推荐）
-├── start.bat / admin.bat / deploy.bat / deploy-cf.bat   # Windows 一键脚本
-├── wrangler.toml        # Cloudflare Pages 项目配置
+├── deploy.js            # 自动化部署脚本（→ GitHub Pages）
+├── start.bat / admin.bat / deploy.bat   # Windows 一键脚本
 ├── src/
 │   ├── docs/            # 你的文档（Markdown）
 │   ├── templates/       # HTML 模板（doc.html / index.html）
@@ -35,7 +37,7 @@
 
 ## 快速开始
 ```bash
-npm install        # 安装依赖（marked；命令行部署 Cloudflare 时脚本会自动 npx 下载 wrangler）
+npm install        # 安装依赖（marked, gh-pages）
 npm run dev        # 构建 + 启动本地预览（http://localhost:3000）
 ```
 - 仅构建：`npm run build`
@@ -84,11 +86,9 @@ npm run admin        # 或双击 admin.bat
 
 > 后台是本地写作工具，请勿暴露到公网。线上部署只发布 `public/` 静态产物。
 
-## 免费部署到 Cloudflare Pages（推荐，国内可直连）
-Cloudflare Pages 免费、无需服务器，且在中国大陆通常可直接访问（不像 `github.io` 常被墙）。三种方式任选其一：
-
-### 方式一：Git 仓库自动部署（最省事，推荐）
-1. 把项目推到 GitHub：
+## 免费部署到 GitHub Pages
+1. 在 GitHub 新建仓库（如 `blog`）。
+2. 初始化并关联远程：
    ```bash
    git init
    git add .
@@ -97,36 +97,11 @@ Cloudflare Pages 免费、无需服务器，且在中国大陆通常可直接访
    git remote add origin https://github.com/ljjqw/blog.git
    git push -u origin main
    ```
-2. 打开 Cloudflare 控制台 → **Workers & Pages** → **Create** → 选 **Pages** → 连接你的 GitHub 仓库。
-3. 构建设置：
-   - Build command: `npm run build`
-   - Build output directory: `public`
-4. 部署完成后会得到一个 `*.pages.dev` 地址；在 **Custom domains** 还能绑定自己的域名。之后每次 `git push` 都会自动重新部署。
+3. 一键部署：`npm run deploy`（或双击 deploy.bat）。
+4. **关键**：进入仓库 **Settings → Pages**，Source 选 `Deploy from a branch`，分支选 `gh-pages` / `(root)`，Save。
+5. 等待 1~2 分钟，访问 `https://<用户名>.github.io/<仓库名>/`（项目站点必须带 `/<仓库名>/`）。
 
-### 方式二：命令行一键部署（Wrangler）
-```bash
-npm run deploy:cf      # 或双击 deploy-cf.bat
-```
-脚本会先构建，再用 Cloudflare 官方 Wrangler 把 `public/` 上传。首次需要鉴权，任选其一：
-- 交互登录（本机一次性）：先运行 `npx wrangler login`
-- CI / 自动化：设置环境变量 `CLOUDFLARE_API_TOKEN` 与 `CLOUDFLARE_ACCOUNT_ID`
-  （Cloudflare 控制台 → My Profile → API Tokens，权限选 **Account: Cloudflare Pages: Edit**）
-
-项目名默认取 `package.json` 的 name，可用环境变量 `CF_PROJECT_NAME` 覆盖。
-
-### 方式三：GitHub Actions（push 自动部署）
-仓库已附带 `.github/workflows/deploy-cloudflare.yml`。在仓库 **Settings → Secrets and variables** 添加：
-- `CLOUDFLARE_API_TOKEN`
-- `CLOUDFLARE_ACCOUNT_ID`
-
-之后 push 到 `main` 分支即自动构建并部署（项目名可用仓库 **Variables** 中的 `CF_PROJECT_NAME` 覆盖）。
-
-## 备选：部署到 GitHub Pages
-若仍想用 GitHub Pages：
-```bash
-npm run deploy        # 或双击 deploy.bat
-```
-部署后需到仓库 **Settings → Pages** 选 `gh-pages` 分支才会真正可访问（详见旧版说明）。注意 `github.io` 在国内常被墙/很慢。
+> github.io 在中国大陆常被墙/很慢，若打不开，建议改用 **Cloudflare Pages**（构建命令 `npm run build`，输出目录 `public`）。
 
 ## 自定义
 - 站点信息 / GitHub 链接 / 端口：编辑 `config.js`
