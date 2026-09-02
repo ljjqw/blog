@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>连接器总览 · 我的文档站</title>
+<meta name="description" content="技术文档与个人笔记，支持层级目录、全文搜索与亮暗主题。">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../index.html">我的文档站</a>
+  <div class="topbar-right">
+    <input id="searchInput" class="search" type="search" placeholder="搜索文档… (Ctrl+K)" aria-label="搜索文档">
+    <a class="topbar-link" href="https://github.com/ljjqw/blog" target="_blank" rel="noopener">GitHub</a>
+    <button id="themeToggle" class="icon-btn" title="切换亮/暗主题">🌓</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">文档目录</div>
+    <a class="nav-link leaf" href="../docs/home.html">站点介绍</a>
+<details class="nav-group" open><summary class="nav-summary"><a class="nav-link" href="../docs/guide.html">使用指南</a></summary><div class="nav-children"><details class="nav-group"><summary class="nav-summary"><a class="nav-link" href="../docs/getting-started.html">开始使用</a></summary><div class="nav-children"><a class="nav-link leaf" href="../docs/123.html">123</a></div></details><a class="nav-link leaf" href="../docs/writing-docs.html">编写文档与层级关系</a></div></details>
+<details class="nav-group" open><summary class="nav-summary"><a class="nav-link" href="../docs/examples.html">技术示例</a></summary><div class="nav-children"><a class="nav-link leaf active" href="../docs/connectors-overview.html">连接器总览</a></div></details>
+<a class="nav-link leaf" href="../docs/contact.html">联系方式</a>
+<a class="nav-link leaf" href="../docs/readme.html">README</a>
+  </aside>
+  <main class="content">
+    <article class="doc">
+      <h1 class="doc-title">连接器总览</h1>
+      <h1>连接器总览（Connectors Overview）</h1>
+<blockquote>
+<p>本页为示例文档，演示技术类文档的排版。</p>
+</blockquote>
+<h2 id="概述">概述</h2>
+<p><strong>Connector（连接器）</strong> 用于连接两个节点，触发 <code>PendingConnectionStartedEvent</code>，并依赖 <code>Anchor</code> 与 <code>IsConnected</code> 属性。按住 <code>ALT</code> 点击可触发 <code>DisconnectCommand</code> 断开连接。</p>
+<h2 id="nodeinput-与-nodeoutput">NodeInput 与 NodeOutput</h2>
+<p>二者都是 <code>Connector</code> 的具体实现，提供：</p>
+<ul>
+<li><code>Header</code> / <code>HeaderTemplate</code></li>
+<li><code>ConnectorTemplate</code></li>
+</ul>
+<pre><code class="language-ts">public class NodeInput : Connector { }
+public class NodeOutput : Connector { }
+</code></pre>
+<h2 id="小结">小结</h2>
+<ul>
+<li>连接器负责“点”与“边”的连接语义</li>
+<li>输入/输出是连接器的两个常见形态</li>
+</ul>
+
+    </article>
+    <nav class="pager"><a class="pn pn-prev" href="../docs/examples.html"><span class="pn-label">← 上一页</span><span class="pn-title">技术示例</span></a><a class="pn pn-next" href="../docs/contact.html"><span class="pn-label">下一页 →</span><span class="pn-title">联系方式</span></a></nav>
+  </main>
+  <aside class="toc">
+    <div class="toc-inner"><div class="toc-title">本页目录</div><ul class="toc-list"><li class="toc-2"><a href="#概述">概述</a></li><li class="toc-2"><a href="#nodeinput-与-nodeoutput">NodeInput 与 NodeOutput</a></li><li class="toc-2"><a href="#小结">小结</a></li></ul></div>
+  </aside>
+</div>
+<footer class="site-footer">© <span>2026</span> 我的文档站 · 基于静态站点生成</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

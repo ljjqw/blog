@@ -1,45 +1,134 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>我的个人博客</title>
-  <meta name="description" content="一个用免费方案搭建的个人博客，支持 Markdown 写作、本地预览与一键部署。">
-  <link rel="stylesheet" href="assets/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的文档站</title>
+<meta name="description" content="技术文档与个人笔记，支持层级目录、全文搜索与亮暗主题。">
+<link rel="stylesheet" href="assets/style.css">
 </head>
-<body>
-  <header class="site-header">
-    <div class="container">
-      <a class="logo" href="./">我的个人博客</a>
-      <nav><a href="./">首页</a></nav>
+<body class="showcase-page">
+<nav class="site-nav">
+  <a class="brand" href="index.html">我的文档站</a>
+  <div class="nav-right">
+    <a class="nav-link" href="docs/home.html">文档</a>
+    <a class="nav-link" href="https://github.com/ljjqw/blog" target="_blank" rel="noopener">GitHub</a>
+    <button id="themeToggle" class="icon-btn" title="切换亮/暗主题">🌓</button>
+  </div>
+</nav>
+
+<!-- 主视觉 -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="badge">📚 文档框架 · 免费 · 纯静态</div>
+    <h1 class="hero-title">我的文档站</h1>
+    <p class="hero-desc">技术文档与个人笔记，支持层级目录、全文搜索与亮暗主题。</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="docs/home.html">开始阅读 →</a>
+      <a class="btn-ghost" href="https://github.com/ljjqw/blog" target="_blank" rel="noopener">GitHub 仓库</a>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main class="container">
-    <section class="hero">
-      <h1>我的个人博客</h1>
-      <p class="lead">一个用免费方案搭建的个人博客，支持 Markdown 写作、本地预览与一键部署。</p>
-    </section>
-
-    <ul class="post-list">
-      
-        <li class="post-item">
-          <a class="post-link" href="posts/welcome.html">
-            <h2>欢迎来到我的博客</h2>
-          </a>
-          <div class="post-meta">2026-09-02 · 这是一篇示例文章，演示如何用 Markdown 写博客并免费部署。</div>
-          <div class="tags"><span class="tag">公告</span><span class="tag">入门</span></div>
-        </li>
-    </ul>
-
-    
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <span>© 2026 Your Name</span>
-      <span>· Powered by a free static-site workflow</span>
+<!-- 核心特性 / 技术介绍 -->
+<section class="features">
+  <div class="section-head">
+    <h2>核心特性</h2>
+    <p>一套为技术写作与知识沉淀设计的文档框架。</p>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="ic">🌲</div>
+      <h3>层级文档树</h3>
+      <p>支持任意父子嵌套的可折叠侧边栏，轻松组织大型文档。</p>
     </div>
-  </footer>
+<div class="feature-card">
+      <div class="ic">🔍</div>
+      <h3>全文搜索</h3>
+      <p>Ctrl+K 唤起搜索，实时过滤整棵文档树。</p>
+    </div>
+<div class="feature-card">
+      <div class="ic">🌗</div>
+      <h3>亮 / 暗主题</h3>
+      <p>一键切换主题，自动记忆你的偏好。</p>
+    </div>
+<div class="feature-card">
+      <div class="ic">📑</div>
+      <h3>本页目录</h3>
+      <p>自动提取章节标题，点击平滑跳转并高亮。</p>
+    </div>
+<div class="feature-card">
+      <div class="ic">⚡</div>
+      <h3>纯静态零成本</h3>
+      <p>Markdown 构建为静态站，免费托管于 GitHub Pages。</p>
+    </div>
+<div class="feature-card">
+      <div class="ic">🛠</div>
+      <h3>后台管理</h3>
+      <p>在线写文章、批量导入 MD、可视化调整层级。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 文档示例 / 技术介绍展示 -->
+<section class="showcase">
+  <div class="section-head">
+    <h2>文档导航</h2>
+    <p>从下面的目录进入对应篇章，或点击右上角「文档」浏览完整树。</p>
+  </div>
+  <div class="showcase-grid">
+    <a class="show-card" href="docs/home.html">
+        <h3>站点介绍</h3>
+        <div class="card-sub">这个文档站点的定位与使用方法。</div>
+      </a>
+<a class="show-card" href="docs/guide.html">
+        <h3>使用指南</h3>
+        <div class="card-sub">2 篇文档</div>
+      </a>
+<a class="show-card" href="docs/examples.html">
+        <h3>技术示例</h3>
+        <div class="card-sub">1 篇文档</div>
+      </a>
+<a class="show-card" href="docs/contact.html">
+        <h3>联系方式</h3>
+        <div class="card-sub">与我取得联系的方式。</div>
+      </a>
+<a class="show-card" href="docs/readme.html">
+        <h3>README</h3>
+        <div class="card-sub"></div>
+      </a>
+  </div>
+</section>
+
+<!-- 它是如何工作的 -->
+<section class="how">
+  <div class="section-head">
+    <h2>它是如何工作的</h2>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>写作</h3>
+      <p>在 <code>src/docs</code> 用 Markdown 写内容，frontmatter 控制层级与排序。</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>构建</h3>
+      <p><code>npm run build</code> 把 Markdown 编译为带文档树 / 搜索 / 主题的静态站。</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>部署</h3>
+      <p><code>npm run deploy</code> 一键发布到 GitHub Pages，永久免费。</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  © <span>2026</span> 我的文档站 · 基于静态站点生成
+  <span class="foot-links"><a href="docs/home.html">文档</a> · <a href="https://github.com/ljjqw/blog" target="_blank" rel="noopener">GitHub</a></span>
+</footer>
+
+<script src="assets/app.js"></script>
 </body>
 </html>

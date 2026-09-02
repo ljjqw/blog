@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>README · 我的文档站</title>
+<meta name="description" content="技术文档与个人笔记，支持层级目录、全文搜索与亮暗主题。">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../index.html">我的文档站</a>
+  <div class="topbar-right">
+    <input id="searchInput" class="search" type="search" placeholder="搜索文档… (Ctrl+K)" aria-label="搜索文档">
+    <a class="topbar-link" href="https://github.com/ljjqw/blog" target="_blank" rel="noopener">GitHub</a>
+    <button id="themeToggle" class="icon-btn" title="切换亮/暗主题">🌓</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">文档目录</div>
+    <a class="nav-link leaf" href="../docs/home.html">站点介绍</a>
+<details class="nav-group" open><summary class="nav-summary"><a class="nav-link" href="../docs/guide.html">使用指南</a></summary><div class="nav-children"><details class="nav-group"><summary class="nav-summary"><a class="nav-link" href="../docs/getting-started.html">开始使用</a></summary><div class="nav-children"><a class="nav-link leaf" href="../docs/123.html">123</a></div></details><a class="nav-link leaf" href="../docs/writing-docs.html">编写文档与层级关系</a></div></details>
+<details class="nav-group" open><summary class="nav-summary"><a class="nav-link" href="../docs/examples.html">技术示例</a></summary><div class="nav-children"><a class="nav-link leaf" href="../docs/connectors-overview.html">连接器总览</a></div></details>
+<a class="nav-link leaf" href="../docs/contact.html">联系方式</a>
+<a class="nav-link leaf active" href="../docs/readme.html">README</a>
+  </aside>
+  <main class="content">
+    <article class="doc">
+      <h1 class="doc-title">README</h1>
+      <h1>文档博客框架（免费方案）</h1>
+<p>一个零成本的<strong>文档/博客框架</strong>，整体风格参考 <a href="https://miroiu.github.io/nodify/wiki/connectors-overview.html">Nodify 文档站</a>（Starlight 风格）：</p>
+<ul>
+<li>🌲 左侧<strong>可折叠的层级文档树</strong>（任意父子嵌套，支持分组）</li>
+<li>🔍 顶部<strong>全文搜索</strong>（Ctrl+K 聚焦，实时过滤目录）</li>
+<li>🌗 <strong>亮 / 暗主题</strong>一键切换（记忆偏好）</li>
+<li>📑 右侧<strong>本页目录</strong>（自动提取 h2/h3，平滑滚动+高亮）</li>
+<li>⏮ 底部<strong>上一页 / 下一页</strong>导航</li>
+<li>🛠 <strong>后台可视化编辑</strong>：在线写文章、<strong>批量导入 Markdown</strong>、<strong>拖拽式调整层级关系</strong></li>
+</ul>
+<p>纯静态、零服务器成本，构建后一键部署到 GitHub Pages（或 Cloudflare Pages / Netlify）。</p>
+<h2 id="站点页面">站点页面</h2>
+<ul>
+<li><strong>落地页 <code>index.html</code></strong>：站点介绍 + 文档目录卡片</li>
+<li><strong>文档页 <code>docs/&lt;slug&gt;.html</code></strong>：每篇文档，含侧边栏树 / 本页目录 / 上下页</li>
+</ul>
+<h2 id="目录结构">目录结构</h2>
+<pre><code>.
+├── config.js            # 站点配置（标题/描述/GitHub/端口）
+├── build.js             # 构建脚本：Markdown → 静态 HTML（文档树/TOC/导航）
+├── serve.js             # 本地启动服务脚本（静态服务器）
+├── admin.js             # 后台服务（在线编辑 / 导入 MD / 编辑层级）
+├── deploy.js            # 自动化部署脚本（→ GitHub Pages）
+├── start.bat / admin.bat / deploy.bat   # Windows 一键脚本
+├── src/
+│   ├── docs/            # 你的文档（Markdown）
+│   ├── templates/       # HTML 模板（doc.html / index.html）
+│   └── assets/          # 静态资源（style.css / app.js）
+└── public/              # 构建产物（部署用，勿手改）
+</code></pre>
+<h2 id="快速开始">快速开始</h2>
+<pre><code class="language-bash">npm install        # 安装依赖（marked, gh-pages）
+npm run dev        # 构建 + 启动本地预览（http://localhost:3000）
+</code></pre>
+<ul>
+<li>仅构建：<code>npm run build</code></li>
+<li>仅预览：<code>npm run serve</code>（端口可用 <code>PORT=8080 npm run serve</code> 覆盖）</li>
+</ul>
+<p>首次构建会在 <code>src/docs/</code> 生成一批示例文档（含层级结构），可直接参考。</p>
+<h2 id="文档的层级关系frontmatter">文档的层级关系（frontmatter）</h2>
+<p>每篇文档通过头部 frontmatter 控制元数据与层级：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>title</code></td>
+<td>文档标题（侧边栏显示）</td>
+</tr>
+<tr>
+<td><code>parent</code></td>
+<td>父文档的 slug，留空为顶级</td>
+</tr>
+<tr>
+<td><code>order</code></td>
+<td>同级排序，数字越小越靠前</td>
+</tr>
+<tr>
+<td><code>group</code></td>
+<td>设为 <code>true</code> 显示为可折叠分组</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>标签，逗号分隔</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>一句话简介</td>
+</tr>
+</tbody></table>
+<p>示例（子文档）：</p>
+<pre><code class="language-markdown">---
+title: 子文档
+parent: guide        # 父文档 slug
+order: 1
+---
+
+# 子文档
+
+正文……
+</code></pre>
+<p>构建后会自动生成可折叠的树形导航。</p>
+<h2 id="后台管理编辑-导入-层级">后台管理（编辑 / 导入 / 层级）</h2>
+<pre><code class="language-bash">npm run admin        # 或双击 admin.bat
+</code></pre>
+<p>浏览器打开 <code>http://localhost:4000/admin</code>，有两个标签页：</p>
+<p><strong>1. 编辑文章</strong>：可视化新建 / 编辑 / 删除文档，字段含 <code>父级</code>、<code>排序</code>。</p>
+<p><strong>2. 层级结构</strong>：</p>
+<ul>
+<li>📥 <strong>导入 Markdown</strong>：选择若干 <code>.md</code> 文件批量导入；文件原有的 <code>parent</code> / <code>order</code> 会被保留，slug 冲突时自动加后缀。</li>
+<li>🗂 <strong>关系层级与排序</strong>：表格里为每篇文档设置父级与顺序，点击“保存层级”即重建整棵目录树。</li>
+</ul>
+<blockquote>
+<p>后台是本地写作工具，请勿暴露到公网。线上部署只发布 <code>public/</code> 静态产物。</p>
+</blockquote>
+<h2 id="免费部署到-github-pages">免费部署到 GitHub Pages</h2>
+<ol>
+<li>在 GitHub 新建仓库（如 <code>blog</code>）。</li>
+<li>初始化并关联远程：<pre><code class="language-bash">git init
+git add .
+git commit -m &quot;init&quot;
+git branch -M main
+git remote add origin https://github.com/ljjqw/blog.git
+git push -u origin main
+</code></pre>
+</li>
+<li>一键部署：<code>npm run deploy</code>（或双击 deploy.bat）。</li>
+<li><strong>关键</strong>：进入仓库 <strong>Settings → Pages</strong>，Source 选 <code>Deploy from a branch</code>，分支选 <code>gh-pages</code> / <code>(root)</code>，Save。</li>
+<li>等待 1~2 分钟，访问 <code>https://&lt;用户名&gt;.github.io/&lt;仓库名&gt;/</code>（项目站点必须带 <code>/&lt;仓库名&gt;/</code>）。</li>
+</ol>
+<blockquote>
+<p>github.io 在中国大陆常被墙/很慢，若打不开，建议改用 <strong>Cloudflare Pages</strong>（构建命令 <code>npm run build</code>，输出目录 <code>public</code>）。</p>
+</blockquote>
+<h2 id="自定义">自定义</h2>
+<ul>
+<li>站点信息 / GitHub 链接 / 端口：编辑 <code>config.js</code></li>
+<li>样式（亮暗主题、侧边栏、TOC）：编辑 <code>src/assets/style.css</code></li>
+<li>页面布局：编辑 <code>src/templates/*.html</code></li>
+<li>前端交互（主题/搜索/目录）：编辑 <code>src/assets/app.js</code></li>
+</ul>
+
+    </article>
+    <nav class="pager"><a class="pn pn-prev" href="../docs/contact.html"><span class="pn-label">← 上一页</span><span class="pn-title">联系方式</span></a><span class="pn pn-empty"></span></nav>
+  </main>
+  <aside class="toc">
+    <div class="toc-inner"><div class="toc-title">本页目录</div><ul class="toc-list"><li class="toc-2"><a href="#站点页面">站点页面</a></li><li class="toc-2"><a href="#目录结构">目录结构</a></li><li class="toc-2"><a href="#快速开始">快速开始</a></li><li class="toc-2"><a href="#文档的层级关系frontmatter">文档的层级关系（frontmatter）</a></li><li class="toc-2"><a href="#后台管理编辑-导入-层级">后台管理（编辑 / 导入 / 层级）</a></li><li class="toc-2"><a href="#免费部署到-github-pages">免费部署到 GitHub Pages</a></li><li class="toc-2"><a href="#自定义">自定义</a></li></ul></div>
+  </aside>
+</div>
+<footer class="site-footer">© <span>2026</span> 我的文档站 · 基于静态站点生成</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

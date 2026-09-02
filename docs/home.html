@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>站点介绍 · 我的文档站</title>
+<meta name="description" content="技术文档与个人笔记，支持层级目录、全文搜索与亮暗主题。">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../index.html">我的文档站</a>
+  <div class="topbar-right">
+    <input id="searchInput" class="search" type="search" placeholder="搜索文档… (Ctrl+K)" aria-label="搜索文档">
+    <a class="topbar-link" href="https://github.com/ljjqw/blog" target="_blank" rel="noopener">GitHub</a>
+    <button id="themeToggle" class="icon-btn" title="切换亮/暗主题">🌓</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">文档目录</div>
+    <a class="nav-link leaf active" href="../docs/home.html">站点介绍</a>
+<details class="nav-group" open><summary class="nav-summary"><a class="nav-link" href="../docs/guide.html">使用指南</a></summary><div class="nav-children"><details class="nav-group"><summary class="nav-summary"><a class="nav-link" href="../docs/getting-started.html">开始使用</a></summary><div class="nav-children"><a class="nav-link leaf" href="../docs/123.html">123</a></div></details><a class="nav-link leaf" href="../docs/writing-docs.html">编写文档与层级关系</a></div></details>
+<details class="nav-group" open><summary class="nav-summary"><a class="nav-link" href="../docs/examples.html">技术示例</a></summary><div class="nav-children"><a class="nav-link leaf" href="../docs/connectors-overview.html">连接器总览</a></div></details>
+<a class="nav-link leaf" href="../docs/contact.html">联系方式</a>
+<a class="nav-link leaf" href="../docs/readme.html">README</a>
+  </aside>
+  <main class="content">
+    <article class="doc">
+      <h1 class="doc-title">站点介绍</h1>
+      <h1>欢迎来到我的文档站 👋</h1>
+<p>这是一个<strong>免费方案</strong>搭建的文档/博客框架，整体风格参考了 Nodify 等项目的文档站：</p>
+<ul>
+<li>🌲 左侧是可折叠的<strong>层级文档树</strong>，支持任意父子嵌套</li>
+<li>🔍 顶部<strong>搜索</strong>可快速过滤文档（Ctrl+K 聚焦）</li>
+<li>🌗 右上角可<strong>切换亮/暗主题</strong></li>
+<li>📑 右侧<strong>本页目录</strong>方便跳转章节</li>
+<li>⏮ 底部有<strong>上一页 / 下一页</strong>导航</li>
+<li>🛠 后台可<strong>批量导入 Markdown</strong> 并<strong>编辑层级关系</strong></li>
+</ul>
+<h2 id="如何开始">如何开始</h2>
+<p>点击左侧目录中的任意文档开始阅读，或点击右上角 GitHub 查看源码。</p>
+<blockquote>
+<p>写作方式：在 <code>src/docs</code> 目录新建 <code>.md</code> 文件，通过 frontmatter 的 <code>parent</code> / <code>order</code> 控制层级与排序。</p>
+</blockquote>
+
+    </article>
+    <nav class="pager"><span class="pn pn-empty"></span><a class="pn pn-next" href="../docs/guide.html"><span class="pn-label">下一页 →</span><span class="pn-title">使用指南</span></a></nav>
+  </main>
+  <aside class="toc">
+    <div class="toc-inner"><div class="toc-title">本页目录</div><ul class="toc-list"><li class="toc-2"><a href="#如何开始">如何开始</a></li></ul></div>
+  </aside>
+</div>
+<footer class="site-footer">© <span>2026</span> 我的文档站 · 基于静态站点生成</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>
